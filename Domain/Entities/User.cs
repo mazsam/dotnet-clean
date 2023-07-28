@@ -6,10 +6,9 @@ namespace VendorBoilerplate.Domain.Entities
 {
     public class User : BaseEntity
     {
-        public string Email { set; get; }
-        public string Notes { set; get; }
-        public string Phone { set; get; }
-        public string UserName { set; get; }
-        public int RowStatus { set; get; }
+        public string Email { set; get; } = string.Empty;
+        public string Notes { set; get; }  = string.Empty;
+        public string Phone { set; get; }  = string.Empty;
+        public string UserName { set; get; } = string.Empty;
     }
 }

@@ -4,7 +4,7 @@ namespace VendorBoilerplate.Application.UseCases.WeatherForecast
 {
   public class WeatherForecastDto : PaginationDto
   {
-     public WeatherForecastData[] Data { set; get; }
+     public WeatherForecastData[]? Data { set; get; }
   }
 
   public class WeatherForecastData

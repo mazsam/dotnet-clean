@@ -76,6 +76,7 @@ namespace VendorBoilerplate
                     services.BuildServiceProvider().GetService<Utils>()
                 ));
             });
+            
             services.AddSingleton(mappingConfig.CreateMapper());
 
             services.AddCors(o => o.AddPolicy("AllowAll", builder =>

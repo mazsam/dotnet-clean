@@ -11,7 +11,7 @@ namespace VendorBoilerplate.Application.Infrastructures.AutoMapper
         public Utils _utils { set; get; }
         public AutoMapperProfile(IVendorDBContext context, Utils utils)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
             _utils = utils;
 
             LoadStandardMappings();

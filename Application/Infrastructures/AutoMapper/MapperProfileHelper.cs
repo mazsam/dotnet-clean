@@ -8,8 +8,8 @@ namespace VendorBoilerplate.Application.Infrastructures.AutoMapper
 {
     public sealed class Map
     {
-        public Type Source { set; get; }
-        public Type Destination { set; get; }
+        public Type? Source { set; get; }
+        public Type? Destination { set; get; }
     }
 
     public class MapperProfileHelper
@@ -43,7 +43,7 @@ namespace VendorBoilerplate.Application.Infrastructures.AutoMapper
                     typeof(IHaveCustomMapping).IsAssignableFrom(type) &&
                     !type.IsAbstract &&
                     !type.IsInterface
-                select (IHaveCustomMapping)Activator.CreateInstance(type)).ToList();
+                select (IHaveCustomMapping?)Activator.CreateInstance(type)).ToList();
 
             return mapsFrom;
         }

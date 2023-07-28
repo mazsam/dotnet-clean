@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace VendorBoilerplate.Application.Infrastructures
 {
-    public class RequestLogger<TRequest> : IRequestPreProcessor<TRequest>
+    public class RequestLogger<TRequest> where TRequest : notnull
     {
         private readonly ILogger _logger;
 
