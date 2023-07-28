@@ -5,6 +5,7 @@ using VendorBoilerplate.Application.UseCases.WeatherForecast;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using System.Net.Mime;
+using MediatR;
 
 namespace VendorBoilerplate.Presenter.Controllers;
 
@@ -13,8 +14,11 @@ namespace VendorBoilerplate.Presenter.Controllers;
 [Route("/weather")]
 public class WeatherForecastController : BaseController
 {
-    public WeatherForecastController()
+    protected IMediator _mediator;
+
+    public WeatherForecastController(IMediator mediator)
     {
+        _mediator = mediator;
     }
 
     [HttpGet]

@@ -22,6 +22,7 @@ using VendorBoilerplate.Application.Misc;
 using VendorBoilerplate.Infrastructure.Authorization;
 using VendorBoilerplate.Infrastructure.ErrorHandler;
 using VendorBoilerplate.Infrastructure.Persistences;
+using VendorBoilerplate.Infrastructure.Messaging.Hangfire;
 using System.IO;
 using System.Linq;
 using System.Reflection;
