@@ -1,26 +1,30 @@
 {
   "format": 1,
   "restore": {
-    "/Users/massam/Project/Research/VendorBoilerplate/VendorBoilerplate.csproj": {}
+    "C:\\Users\\arifi\\source\\repos\\dotnet-clean\\VendorBoilerplate.csproj": {}
   },
   "projects": {
-    "/Users/massam/Project/Research/VendorBoilerplate/VendorBoilerplate.csproj": {
+    "C:\\Users\\arifi\\source\\repos\\dotnet-clean\\VendorBoilerplate.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/massam/Project/Research/VendorBoilerplate/VendorBoilerplate.csproj",
+        "projectUniqueName": "C:\\Users\\arifi\\source\\repos\\dotnet-clean\\VendorBoilerplate.csproj",
         "projectName": "VendorBoilerplate",
-        "projectPath": "/Users/massam/Project/Research/VendorBoilerplate/VendorBoilerplate.csproj",
-        "packagesPath": "/Users/massam/.nuget/packages/",
-        "outputPath": "/Users/massam/Project/Research/VendorBoilerplate/obj/",
+        "projectPath": "C:\\Users\\arifi\\source\\repos\\dotnet-clean\\VendorBoilerplate.csproj",
+        "packagesPath": "C:\\Users\\arifi\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\arifi\\source\\repos\\dotnet-clean\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/massam/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\arifi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
           "net7.0"
         ],
         "sources": {
-          "/usr/local/share/dotnet/sdk/7.0.306/Sdks/Microsoft.NET.Sdk.Web/library-packs": {},
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -87,7 +91,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/7.0.306/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.102\\RuntimeIdentifierGraph.json"
         }
       }
     }

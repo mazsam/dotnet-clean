@@ -1,3 +1,3 @@
 ﻿<Project>
-  <Import Project="../build/VendorBoilerplate.props" />
+  <Import Project="..\build\VendorBoilerplate.props" />
 </Project>
