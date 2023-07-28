@@ -12,9 +12,9 @@ using System.Threading.Tasks;
 
 namespace VendorBoilerplate.Infrastructure.Persistences
 {
-    public class VendorBoilerplate : DbContext, IVendorDBContext
+    public class VendorDBContext : DbContext, IVendorDBContext
     {
-        public VendorBoilerplate(DbContextOptions<VendorDBContext> options) : base(options)
+        public VendorDBContext(DbContextOptions<VendorDBContext> options) : base(options)
         {
 
         }
@@ -68,22 +68,15 @@ namespace VendorBoilerplate.Infrastructure.Persistences
 
             foreach (var entityEntry in entries)
             {
-                ((BaseEntity)entityEntry.Entity).LastUpdateDate = DateTime.Now;
+                ((BaseEntity)entityEntry.Entity).UpdatedAt = DateTime.Now;
                 if (entityEntry.State == EntityState.Added)
                 {
-                    ((BaseEntity)entityEntry.Entity).CreateDate = DateTime.Now;
+                    ((BaseEntity)entityEntry.Entity).CreatedAt = DateTime.Now;
                     ((BaseEntity)entityEntry.Entity).RowStatus = 0;
                 }
-                if (!(entityEntry.Entity is User) && !(entityEntry.Entity is Recommendation) && !(entityEntry.Entity is SalesmanMeta))
+                if (!(entityEntry.Entity is User))
                 {
                     UpdateSoftDeleteStatuses(entityEntry);
-                }
-            }
-            foreach (var entityEntry in ChangeTracker.Entries())
-            {
-                if (entityEntry.Entity is Salesman)
-                {
-                    entityEntry.State = EntityState.Unchanged;
                 }
             }
         }

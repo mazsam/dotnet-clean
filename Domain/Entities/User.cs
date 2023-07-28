@@ -10,5 +10,6 @@ namespace VendorBoilerplate.Domain.Entities
         public string Notes { set; get; }
         public string Phone { set; get; }
         public string UserName { set; get; }
+        public int RowStatus { set; get; }
     }
 }

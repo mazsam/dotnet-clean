@@ -5,7 +5,7 @@ namespace VendorBoilerplate.Application.Models.Query
 {
   public class PaginationDto : BaseDto
   {
-    public PaginationData Pagination { set; get; }
+    public PaginationData? Pagination { set; get; }
   }
 
   public class PaginationData

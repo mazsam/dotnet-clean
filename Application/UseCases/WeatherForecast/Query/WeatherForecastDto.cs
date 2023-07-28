@@ -7,7 +7,7 @@ namespace VendorBoilerplate.Application.UseCases.WeatherForecast
      public WeatherForecastData[] Data { set; get; }
   }
 
-  public class WeatherForecastData : BaseDto
+  public class WeatherForecastData
   {
       public DateOnly Date { get; set; }
 

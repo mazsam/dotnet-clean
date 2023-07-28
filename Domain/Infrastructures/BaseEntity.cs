@@ -6,8 +6,9 @@ namespace VendorBoilerplate.Domain.Infrastructures
   {
     public int Id { set; get; }
     public string CreatedBy { set; get; }
-    public DateTime CreateAt { set; get; }
-    public string UpdateBy { set; get; }
-    public DateTime? UpdateAt { set; get; }
+    public DateTime CreatedAt { set; get; }
+    public string UpdatedBy { set; get; }
+    public DateTime? UpdatedAt { set; get; }
+    public int RowStatus { set; get; }
   }
 }

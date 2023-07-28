@@ -7,9 +7,9 @@ namespace VendorBoilerplate.Application.Infrastructures.AutoMapper
 {
     public class AutoMapperProfile : Profile
     {
-        public IvendorDBContext _context { set; get; }
+        public IVendorDBContext _context { set; get; }
         public Utils _utils { set; get; }
-        public AutoMapperProfile(IvendorDBContext context, Utils utils)
+        public AutoMapperProfile(IVendorDBContext context, Utils utils)
         {
             _context = context;
             _utils = utils;
@@ -40,11 +40,6 @@ namespace VendorBoilerplate.Application.Infrastructures.AutoMapper
             {
                 map.CreateMappings(this);
             }
-        }
-
-        public string GetFullUrl(string path)
-        {
-            return _utils.GetValidUrl(path);
         }
     }
 }

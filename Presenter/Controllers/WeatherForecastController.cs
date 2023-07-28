@@ -13,11 +13,8 @@ namespace VendorBoilerplate.Presenter.Controllers;
 [Route("/weather")]
 public class WeatherForecastController : BaseController
 {
-    private readonly IAuthUser _authUser;
-
-    public WeatherForecastController(IAuthUser authUser)
+    public WeatherForecastController()
     {
-        _authUser = authUser;
     }
 
     [HttpGet]

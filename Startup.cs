@@ -38,18 +38,8 @@ namespace VendorBoilerplate
 
         public void ConfigureServices(IServiceCollection services)
         {
-            var logger = new LoggerConfiguration()
-                .ReadFrom.Configuration(Configuration)
-                .Enrich.FromLogContext()
-                .CreateLogger();
-
-            services.AddLogging(a => a.AddSerilog(logger));
-
             services.AddControllers();
             services.AddMemoryCache();
-
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestPerformanceBehaviour<,>));
-            services.AddTransient(typeof(IPipelineBehavior<,>), typeof(RequestValidationBehaviour<,>));
 
             services.AddSingleton<Utils>();
             services.AddHttpContextAccessor();
@@ -73,7 +63,7 @@ namespace VendorBoilerplate
 
             services.AddHttpClient();
             // Add DbContext using SQL Server Provider
-            services.AddDbContext<ISFDDBContext, SFDDbContext>(options =>
+            services.AddDbContext<IVendorDBContext, VendorDBContext>(options =>
                 options
                     .UseLazyLoadingProxies()
                     .UseSqlServer(Configuration.GetConnectionString("VendorDatabase")));
@@ -87,33 +77,7 @@ namespace VendorBoilerplate
                 ));
             });
             services.AddSingleton(mappingConfig.CreateMapper());
-            services
-               .AddMvc()
-               .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ForgotPasswordCommandValidator>())
-               .AddNewtonsoftJson(x =>
-               {
-                   x.SerializerSettings.ContractResolver = new DefaultContractResolver
-                   {
-                       NamingStrategy = new SnakeCaseNamingStrategy()
 
-                   };
-                   x.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-               })
-               .ConfigureApiBehaviorOptions(options =>
-               {
-                   options.InvalidModelStateResponseFactory = c =>
-                   {
-                       var errors = string.Join('\n', c.ModelState.Values.Where(v => v.Errors.Count > 0)
-                           .SelectMany(v => v.Errors)
-                           .Select(v => v.ErrorMessage));
-                       return new BadRequestObjectResult(new
-                       {
-                           ErrorCode = 400,
-                           Message = errors
-                       });
-                   };
-               });
-            services.AddSingleton<IMemoryData, MemoryData>();
             services.AddCors(o => o.AddPolicy("AllowAll", builder =>
             {
                 builder.AllowAnyOrigin()
@@ -132,7 +96,7 @@ namespace VendorBoilerplate
 
             app.UseCors("AllowAll");
             app.UseMiddleware(typeof(ErrorHandlerMiddleware));
-            app.UseAuthme();
+
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
