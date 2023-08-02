@@ -29,6 +29,6 @@ public class WeatherForecastController : BaseController
       {
         UserId = "jhasbdjkahsgvd91121212"
       };
-      return Ok(await Mediator.Send(Query));
+      return Ok(await _mediator.Send(Query));
     }
 }

@@ -1,30 +1,12 @@
 using AutoMapper;
-using FluentValidation.AspNetCore;
-using Hangfire;
-using MediatR;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http.Features;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Server.Kestrel.Core;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.Extensions.FileProviders;
-using Microsoft.Extensions.Hosting;
-using Newtonsoft.Json.Serialization;
-using Serilog;
-using VendorBoilerplate.Application.Infrastructures;
 using VendorBoilerplate.Application.Infrastructures.AutoMapper;
 using VendorBoilerplate.Application.Interfaces;
-using VendorBoilerplate.Application.Interfaces.Authorization;
 using VendorBoilerplate.Application.Misc;
-using VendorBoilerplate.Infrastructure.Authorization;
 using VendorBoilerplate.Infrastructure.ErrorHandler;
 using VendorBoilerplate.Infrastructure.Persistences;
-using VendorBoilerplate.Infrastructure.Messaging.Hangfire;
-using System.IO;
-using System.Linq;
 using System.Reflection;
 
 namespace VendorBoilerplate
@@ -42,6 +24,10 @@ namespace VendorBoilerplate
             services.AddControllers();
             services.AddMemoryCache();
 
+            // Add MediatR
+            services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+
+            services.AddMvc();
             services.AddSingleton<Utils>();
             services.AddHttpContextAccessor();
 
@@ -86,7 +72,6 @@ namespace VendorBoilerplate
                     .AllowAnyMethod()
                     .AllowAnyHeader();
             }));
-
         }
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
