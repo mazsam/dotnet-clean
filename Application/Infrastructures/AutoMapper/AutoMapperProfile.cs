@@ -7,9 +7,9 @@ namespace VendorBoilerplate.Application.Infrastructures.AutoMapper
 {
     public class AutoMapperProfile : Profile
     {
-        public IVendorDBContext _context { set; get; }
+        public IUserDBContext _context { set; get; }
         public Utils _utils { set; get; }
-        public AutoMapperProfile(IVendorDBContext context, Utils utils)
+        public AutoMapperProfile(IUserDBContext context, Utils utils)
         {
             _context = context ?? throw new ArgumentNullException(nameof(context));
             _utils = utils;

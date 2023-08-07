@@ -1,4 +1,4 @@
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using VendorBoilerplate.Application.Interfaces;
@@ -12,20 +12,21 @@ using System.Threading.Tasks;
 
 namespace VendorBoilerplate.Infrastructure.Persistences
 {
-    public class VendorDBContext : DbContext, IVendorDBContext
+    public class UserDBContext : DbContext, IUserDBContext
     {
-        public VendorDBContext(DbContextOptions<VendorDBContext> options) : base(options)
+        public UserDBContext(DbContextOptions<UserDBContext> options) : base(options)
         {
 
         }
 
         public DbSet<User> Users { set; get; }
+        public DbSet<Role> Roles { set; get; }
 
         public override DatabaseFacade Database => base.Database;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.ApplyConfigurationsFromAssembly(typeof(VendorDBContext).Assembly);
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(UserDBContext).Assembly);
         }
 
         public override EntityEntry Add(object entity)
