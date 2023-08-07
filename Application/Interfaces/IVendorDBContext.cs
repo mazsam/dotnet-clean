@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace VendorBoilerplate.Application.Interfaces
 {
-    public interface IVendorDBContext : IDisposable
+    public interface IUserDBContext : IDisposable
     {
         DbSet<User> Users { set; get; }
 

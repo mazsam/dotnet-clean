@@ -50,16 +50,16 @@ namespace VendorBoilerplate
 
             services.AddHttpClient();
             // Add DbContext using SQL Server Provider
-            services.AddDbContext<IVendorDBContext, VendorDBContext>(options =>
+            services.AddDbContext<IUserDBContext, UserDBContext>(options =>
                 options
                     .UseLazyLoadingProxies()
-                    .UseSqlServer(Configuration.GetConnectionString("VendorDatabase")));
+                    .UseSqlServer(Configuration.GetConnectionString("UserDatabase")));
 
             // mapper
             var mappingConfig = new MapperConfiguration(mc =>
             {
                 mc.AddProfile(new AutoMapperProfile(
-                    services.BuildServiceProvider().GetService<VendorDBContext>(),
+                    services.BuildServiceProvider().GetService<UserDBContext>(),
                     services.BuildServiceProvider().GetService<Utils>()
                 ));
             });
